@@ -1,44 +1,11 @@
 #!/bin/bash
 
 _get_ziplink () {
-    local regex
-    regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "goodcat" ]]
-    then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL2RqbWFydHlob3VzZS9jYXR1c2VyYm90L2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
-    elif [[ $UPSTREAM_REPO == "badcat" ]]
-    then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL2RqbWFydHlob3VzZS9jYXR1c2VyYm90L2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
-    elif [[ $UPSTREAM_REPO =~ $regex ]]
-    then
-        if [[ $UPSTREAM_REPO_BRANCH ]]
-        then
-            echo "${UPSTREAM_REPO}/archive/${UPSTREAM_REPO_BRANCH}.zip"
-        else
-            echo "${UPSTREAM_REPO}/archive/master.zip"
-        fi
-    else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL2RqbWFydHlob3VzZS9jYXR1c2VyYm90L2FyY2hpdmUvbWFzdGVyLnppcA==" | base64 -d
-    fi
+    echo "https://github.com/djmartyhouse/catuserbot/archive/master.zip"
 }
 
 _get_repolink () {
-    local regex
-    local rlink
-    regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "goodcat" ]]
-    then
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL2RqbWFydHlob3VzZS9jYXR1c2VyYm90Cg==" | base64 -d`
-    elif [[ $UPSTREAM_REPO == "badcat" ]]
-    then
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL2RqbWFydHlob3VzZS9jYXR1c2VyYm90Cg==" | base64 -d`
-    elif [[ $UPSTREAM_REPO =~ $regex ]]
-    then
-        rlink=`echo "${UPSTREAM_REPO}"`
-    else
-        rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL2RqbWFydHlob3VzZS9jYXR1c2VyYm90Cg==" | base64 -d`
-    fi
-    echo "$rlink"
+    echo "https://github.com/djmartyhouse/catuserbot"
 }
 
 
